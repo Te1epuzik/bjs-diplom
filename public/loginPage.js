@@ -1,24 +1,23 @@
-"use strict"
+"use strict";
 
-class UserForm {
-	constructor(data, callback) {
-		this.loginFormCallback = (data, callback) => {
-			ApiConnector.login(data, callback)
-		};
+const userForm = new UserForm();
+userForm.loginFormCallback = data => {
+	ApiConnector.login(data, response => {
+		if (response.success) {
+			location.reload();
+		} else {
+			userForm.setLoginErrorMessage(`Ошибка: ${response.error}`);
+		}
+	});
+};
 
-		this.registerFormCallback = () => {
-
-		};
-	}
-
-}
-
-class ApiConnector {
-	static login({login, password}, callback) {
-
-	}
-
-	static register({login, password}, callback) {
-
-	}
-}
+userForm.registerFormCallback = data => {
+	ApiConnector.register(data, response => {
+		if (response.success) {
+			userForm.id = response.id;
+			location.reload();
+		} else {
+			userForm.setRegisterErrorMessage(`Ошибка: ${response.error}`);
+		}
+	});
+};

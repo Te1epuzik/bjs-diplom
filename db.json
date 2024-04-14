@@ -60,6 +60,18 @@
         "EUR": 600,
         "NTC": 90000
       }
+    },
+    {
+      "created_at": "2024-04-14T10:55:44.244Z",
+      "login": "asdf",
+      "password": "asdf",
+      "id": 6,
+      "balance": {
+        "RUB": 0,
+        "USD": 0,
+        "EUR": 0,
+        "NTC": 0
+      }
     }
   ],
   "favorites": {
